@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Lustra Mobile Detailing · Whistler, BC</title>
+  <meta name="description" content="Real work, real results. Watch Lustra Mobile Detailing in action — process footage and before/after transformations across Whistler and the Sea to Sky corridor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── PAGE HERO — Charcoal ── */
+    .page-hero {
+      background: var(--charcoal);
+      padding-top: calc(var(--nav-h) + clamp(72px,10vw,120px));
+      padding-bottom: clamp(72px,10vw,120px);
+      padding-left: var(--pad-x); padding-right: var(--pad-x);
+    }
+    .page-hero__inner { max-width: var(--max-w); margin: 0 auto; }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(52px,9.5vw,120px);
+      line-height: 0.88; color: var(--white); margin-bottom: 32px;
+    }
+    .page-hero__title span { color: var(--sand); display: block; }
+    .page-hero__sub { font-size:17px;font-weight:300;line-height:1.75;color:var(--taupe);max-width:520px; }
+
+    /* ── VIDEO REEL — Sand ── */
+    .reel-section { background: var(--sand); padding: var(--section-y) var(--pad-x); }
+    .reel-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-top: 48px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(89,79,71,.15);
+    }
+    .reel-grid video {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* ── BEFORE / AFTER COLLAGES — Charcoal ── */
+    .ba-section { background: var(--charcoal); padding: var(--section-y) var(--pad-x); }
+    .ba-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-top: 48px;
+    }
+    .collage-item {
+      display: flex; flex-direction: column;
+      overflow: hidden; border-radius: 4px;
+    }
+    .collage-item img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+      transition: transform .45s ease;
+    }
+    .collage-item:hover img { transform: scale(1.05); }
+    .collage-caption {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 12px;
+      background: rgba(42,35,32,.88);
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .collage-caption__before { color: rgba(217,207,196,.55); }
+    .collage-caption__after  { color: var(--mocha); }
+
+    /* ── CTA BAND — Mocha ── */
+    .cta-band {
+      background: var(--mocha); padding: clamp(72px,10vw,112px) var(--pad-x);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: 'LUSTRA'; position: absolute;
+      font-family: var(--font-display); font-size: clamp(100px,18vw,220px);
+      color: rgba(255,255,255,.04); top: 50%; left: 50%;
+      transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+    }
+    .cta-band__inner { position: relative; z-index: 2; max-width: 580px; margin: 0 auto; }
+    .cta-band__title { font-family:var(--font-display);font-size:clamp(30px,5vw,54px);color:var(--white);line-height:1.0;margin-bottom:14px; }
+    .cta-band__sub { font-size:16px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:36px; }
+    .cta-band__actions { display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .reel-grid { grid-template-columns: repeat(2, 1fr); }
+      .collage-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .reel-grid { grid-template-columns: 1fr; }
+      .collage-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── GHL full-width breakout ── */
+    html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+    .page-wrap { width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="nav" id="nav">
+    <a href="https://lustradetail.ca" class="nav__logo">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    </a>
+    <ul class="nav__links">
+      <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+      <li><a href="https://lustradetail.ca/subscription">Subscription</a></li>
+      <li><a href="https://lustradetail.ca/services">Services</a></li>
+      <li><a href="https://lustradetail.ca/gallery" class="active">Gallery</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="tel:9055375457" class="nav__phone">(905) 537-5457</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary">Start Your Plan <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__drawer" id="drawer">
+    <a href="https://lustradetail.ca/commercial">Commercial</a>
+    <a href="https://lustradetail.ca/subscription">Subscription</a>
+    <a href="https://lustradetail.ca/services">Services</a>
+    <a href="https://lustradetail.ca/gallery">Gallery</a>
+    <div class="drawer-contact">
+      <a href="tel:9055375457">(905) 537-5457</a>
+      <a href="mailto:info@lustradetail.ca">info@lustradetail.ca</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary" style="margin-top:10px;">Start Your Plan</a>
+    </div>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">THE WORK.<br><span>REAL RESULTS.</span></h1>
+      <p class="page-hero__sub">Every vehicle leaves cleaner than we found it. Process footage and before/after results from real Lustra jobs across Whistler and the Sea to Sky corridor.</p>
+    </div>
+  </section>
+
+
+  <!-- VIDEO REEL — Sand -->
+  <section class="reel-section">
+    <div class="reel-section__inner">
+      <p class="eyebrow eyebrow--dark">Process Videos</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,48px);color:var(--espresso);line-height:1.0;">Watch the standard.</h2>
+      <div class="reel-grid">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d27a0a683b64fedaa8bb.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2876a6dd1b69afd0d53.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d288162c3e3e34000b93.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d27c0a683b64fedaa8c6.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d27a162c3e3e34000a10.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2836a6dd1b69afd0d07.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2816dd61c546a21a31c.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2826a6dd1b69afd0cfd.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2851c5d711b355bee89.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d6690a683b64fedb12be.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d669162c3e3e34007245.mov" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2816a6dd1b69afd0cef.mov" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BEFORE / AFTER — Charcoal -->
+  <section class="ba-section">
+    <div class="ba-section__inner">
+      <p class="eyebrow">Before &amp; After</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,48px);color:var(--white);line-height:1.0;">The difference is clear.</h2>
+
+      <div class="collage-grid">
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd660a683b64feda2042.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd666dd61c546a21138f.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd670a683b64feda204d.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd661c5d711b355b589c.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd676dd61c546a211394.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd661c5d711b355b5896.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd681c5d711b355b58ca.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd68162c3e3e34ff64dc.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd686a6dd1b69afc753f.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd686dd61c546a2113bf.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd690a683b64feda20a4.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd696dd61c546a2113c5.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd691c5d711b355b58ec.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd69162c3e3e34ff6512.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd696a6dd1b69afc7571.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20c6.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20d4.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a6dd61c546a2113ef.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+        <div class="collage-item">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a162c3e3e34ff6540.jpg" alt="Before &amp; After — Lustra Detail">
+          <div class="collage-caption"><span class="collage-caption__before">Before</span><span class="collage-caption__after">After</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND — Mocha -->
+  <section class="cta-band">
+    <div class="cta-band__inner">
+      <h2 class="cta-band__title">Seen enough?<br>Let's get started.</h2>
+      <p class="cta-band__sub">Skip the back and forth — pick a plan that fits your vehicle and lock in your first visit today.</p>
+      <div class="cta-band__actions">
+        <a href="https://lustradetail.ca/subscription" class="btn btn-white">Start Your Plan &rarr;</a>
+        <a href="https://lustradetail.ca/contact" class="btn btn-ghost">Need a one-time clean? Contact us</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+        <p class="footer__tagline">Whistler, BC &nbsp;·&nbsp; Mobile Detailing</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="https://lustradetail.ca">Home</a></li>
+          <li><a href="https://lustradetail.ca/services">Services</a></li>
+          <li><a href="https://lustradetail.ca/subscription">Membership</a></li>
+          <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+          <li><a href="https://lustradetail.ca/gallery">Gallery</a></li>
+          <li><a href="https://lustradetail.ca/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Get in Touch</p>
+        <a href="tel:9055375457" class="footer__contact-item">(905) 537-5457</a>
+        <a href="mailto:info@lustradetail.ca" class="footer__contact-item">info@lustradetail.ca</a>
+        <a href="https://lustradetail.ca/subscription" class="btn btn-outline" style="margin-top:10px;width:100%;justify-content:center;">Start Your Plan</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; 2025 Lustra Mobile Detailing. All rights reserved.</p>
+      <div class="footer__sub-links">
+        <a href="https://lustradetail.ca/privacy-policy">Privacy Policy</a>
+        <a href="https://lustradetail.ca/terms-and-conditions">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+    burger.addEventListener('click',()=>{const o=burger.classList.toggle('open');drawer.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';}));
+
+    // Play videos only when visible — saves bandwidth and CPU
+    const videos = document.querySelectorAll('.reel-grid video');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(()=>{});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { rootMargin: '400px 0px', threshold: 0.01 });
+    videos.forEach(v => observer.observe(v));
+  </script>
+</div><!-- /.page-wrap -->
+</body>
+</html>

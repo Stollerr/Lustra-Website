@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote — Lustra Mobile Detailing · Whistler, BC</title>
+  <meta name="description" content="Premium mobile car detailing in Whistler, BC. Showroom results at your door. Get a free quote in 60 seconds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── MINIMAL NAV ── */
+    .lp-nav {
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      height:var(--nav-h);display:flex;align-items:center;
+      justify-content:space-between;padding:0 var(--pad-x);
+      background:rgba(61,56,53,.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .lp-nav__logo img { height:40px;width:auto; }
+    .lp-nav__right { display:flex;align-items:center;gap:20px; }
+    .lp-nav__trust { font-size:12px;color:var(--greige); }
+    .lp-nav__trust span { color:var(--sand); }
+
+    /* ── FORM-FIRST HERO — Sand bg, form top-center ── */
+    .lp-form-hero {
+      background: var(--sand);
+      padding-top: var(--nav-h);
+      padding-left: var(--pad-x); padding-right: var(--pad-x);
+      padding-bottom: 0;
+    }
+    .lp-form-hero__inner {
+      max-width: 780px; margin: 0 auto;
+      padding-top: clamp(40px,6vw,72px);
+    }
+    .lp-form-hero__eyebrow {
+      font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--mocha);display:flex;align-items:center;justify-content:center;gap:14px;
+      margin-bottom:20px;
+    }
+    .lp-form-hero__eyebrow::before,.lp-form-hero__eyebrow::after { content:'';display:block;width:24px;height:1px;background:var(--mocha); }
+    .lp-form-hero__title {
+      font-family:var(--font-display);
+      font-size:clamp(36px,6vw,72px);
+      line-height:.92;color:var(--espresso);text-align:center;margin-bottom:14px;
+    }
+    .lp-form-hero__sub {
+      font-size:16px;font-weight:300;line-height:1.7;color:var(--charcoal);
+      text-align:center;max-width:480px;margin:0 auto 36px;
+    }
+
+    /* Form card — centered, prominent */
+    .lp-form-card {
+      background:#fff;
+      border:1px solid rgba(89,79,71,.18);
+      border-radius:8px 8px 0 0;
+      overflow:hidden;
+      box-shadow:0 -8px 40px rgba(42,35,32,.08);
+    }
+    .lp-form-card__header {
+      background:var(--espresso);
+      padding:22px 32px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .lfc-tag { font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--greige);margin-bottom:4px; }
+    .lfc-title { font-family:var(--font-display);font-size:18px;color:var(--white); }
+    .lfc-badge { font-size:12px;color:var(--greige);opacity:.6;text-align:right;line-height:1.6; }
+    .lp-form-card iframe { width:100%;height:1216px;border:none;display:block; }
+
+    /* ── PROOF STRIP ── */
+    .proof-strip { background:var(--espresso);padding:18px var(--pad-x); }
+    .proof-strip__inner {
+      max-width:var(--max-w);margin:0 auto;
+      display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    }
+    .proof-item { display:flex;align-items:center;gap:8px;padding:4px 24px;font-size:12px;font-weight:300;color:var(--greige);border-right:1px solid rgba(255,255,255,.07); }
+    .proof-item:last-child { border-right:none; }
+    .proof-item__dot { color:var(--mocha); }
+
+    /* ── COPY SECTION — Charcoal ── */
+    .lp-copy-section { background:var(--charcoal);padding:var(--section-y) var(--pad-x); }
+    .lp-copy-section__inner {
+      max-width:var(--max-w);margin:0 auto;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    }
+    .lp-copy__title { font-family:var(--font-display);font-size:clamp(32px,5vw,58px);color:var(--white);line-height:.95;margin-bottom:20px; }
+    .lp-copy__title span { color:var(--sand); }
+    .lp-copy__body { font-size:16px;font-weight:300;line-height:1.75;color:var(--taupe);margin-bottom:32px; }
+    .lp-copy__list { display:flex;flex-direction:column;gap:12px; }
+    .lp-copy__item { display:flex;align-items:center;gap:14px;font-size:14px;font-weight:300;color:var(--taupe); }
+    .lp-copy__item::before { content:'';display:block;width:18px;height:1px;background:var(--mocha);flex-shrink:0; }
+
+    /* Value cards grid */
+    .lp-value-grid {
+      display:grid;grid-template-columns:1fr 1fr;gap:2px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04);
+      border-radius:6px;overflow:hidden;
+    }
+    .lp-value { background:var(--charcoal);padding:28px 24px; }
+    .lp-value__num { font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--mocha);margin-bottom:10px; }
+    .lp-value__title { font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px; }
+    .lp-value__body { font-size:13px;font-weight:300;line-height:1.65;color:var(--taupe); }
+
+    /* ── SERVICES — Sand ── */
+    .lp-services { background:var(--sand);padding:var(--section-y) var(--pad-x); }
+    .lp-services__inner { max-width:var(--max-w);margin:0 auto; }
+    .lp-services-grid {
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:2px;margin-top:48px;
+      background:rgba(89,79,71,.15);border:2px solid rgba(89,79,71,.12);
+      border-radius:6px;overflow:hidden;
+    }
+    .lp-svc { background:#fff;padding:30px 26px; }
+    .lp-svc__num { font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--mocha);margin-bottom:10px; }
+    .lp-svc__name { font-family:var(--font-display);font-size:18px;color:var(--espresso);margin-bottom:8px; }
+    .lp-svc__desc { font-size:13px;font-weight:300;line-height:1.65;color:var(--charcoal); }
+    .lp-svc__price { margin-top:14px;padding-top:12px;border-top:1px solid rgba(89,79,71,.1);font-size:12px;font-weight:400;color:var(--mocha); }
+
+    /* ── CTA band — Mocha ── */
+    .lp-cta { background:var(--mocha);padding:64px var(--pad-x);text-align:center;position:relative;overflow:hidden; }
+    .lp-cta::before { content:'LUSTRA';position:absolute;font-family:var(--font-display);font-size:180px;color:rgba(255,255,255,.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none; }
+    .lp-cta__inner { position:relative;z-index:2; }
+    .lp-cta__title { font-family:var(--font-display);font-size:clamp(28px,4.5vw,52px);color:var(--white);line-height:1.0;margin-bottom:12px; }
+    .lp-cta__sub { font-size:16px;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:32px; }
+    .lp-cta__actions { display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap; }
+
+    /* ── MINIMAL FOOTER ── */
+    .lp-footer { background:var(--espresso);padding:36px var(--pad-x);text-align:center;border-top:1px solid rgba(255,255,255,.05); }
+    .lp-footer img { height:38px;width:auto;margin:0 auto 12px; }
+    .lp-footer__tagline { font-size:12px;font-weight:300;color:var(--greige);opacity:.5; }
+    .lp-footer__legal { font-size:11px;color:var(--greige);opacity:.3;margin-top:10px; }
+    .lp-footer__links { display:flex;gap:20px;justify-content:center;margin-top:8px; }
+    .lp-footer__links a { font-size:11px;color:var(--greige);opacity:.3;transition:opacity .2s; }
+    .lp-footer__links a:hover { opacity:.8; }
+
+    @media (max-width:900px) {
+      .lp-copy-section__inner { grid-template-columns:1fr;gap:48px; }
+      .lp-services-grid { grid-template-columns:1fr; }
+      .lp-value-grid { grid-template-columns:1fr; }
+      .lp-nav__trust { display:none; }
+    }
+
+    /* ── GHL full-width breakout ── */
+    html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+    .page-wrap { width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- MINIMAL NAV -->
+  <nav class="lp-nav" id="lpNav">
+    <a href="https://lustradetail.ca" class="lp-nav__logo">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    </a>
+    <div class="lp-nav__right">
+      <div class="lp-nav__trust"><span>★★★★★</span> &nbsp;Whistler's mobile detailing specialists</div>
+      <a href="tel:9055375457" class="btn btn-primary" style="padding:10px 20px;font-size:11px;">(905) 537-5457</a>
+    </div>
+  </nav>
+
+
+  <!-- FORM FIRST — Sand -->
+  <section class="lp-form-hero" id="quote-form">
+    <div class="lp-form-hero__inner">
+      <p class="lp-form-hero__eyebrow">Whistler, BC &nbsp;·&nbsp; Mobile Detailing</p>
+      <h1 class="lp-form-hero__title">Showroom results.<br>Your driveway.</h1>
+      <p class="lp-form-hero__sub">Get your free quote in 60 seconds. Same-day response. No obligation.</p>
+      <div class="lp-form-card">
+        <div class="lp-form-card__header">
+          <div>
+            <div class="lfc-tag">Get a Free Quote</div>
+            <div class="lfc-title">We'll get back to you fast.</div>
+          </div>
+          <div class="lfc-badge">Same-day<br>response</div>
+        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/JekWWAZ9rBLW0mcFqpEW"
+          id="inline-JekWWAZ9rBLW0mcFqpEW-fa"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-activation-type="alwaysActivated"
+          data-deactivation-type="neverDeactivate"
+          data-form-name="Lustra Detailing - Book Now"
+          data-height="1216"
+          data-layout-iframe-id="inline-JekWWAZ9rBLW0mcFqpEW-fa"
+          data-form-id="JekWWAZ9rBLW0mcFqpEW"
+          title="Lustra Detailing - Book Now">
+        </iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-strip__inner">
+      <div class="proof-item"><span class="proof-item__dot">✦</span> Whistler &amp; Sea to Sky</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> Same-Day Response</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> $2M Liability Coverage</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> 48h Satisfaction Guarantee</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> No Lock-In Contracts</div>
+    </div>
+  </div>
+
+
+  <!-- COPY — Charcoal -->
+  <section class="lp-copy-section">
+    <div class="lp-copy-section__inner">
+      <div>
+        <p class="eyebrow">Why Lustra</p>
+        <h2 class="lp-copy__title">Not a luxury brand.<br><span>A quality brand.</span></h2>
+        <p class="lp-copy__body">We charge what we charge because the work backs it. A disciplined process, professional products, and a guarantee on every single visit.</p>
+        <div class="lp-copy__list">
+          <div class="lp-copy__item">Full exterior + interior clean, every visit</div>
+          <div class="lp-copy__item">Interior &amp; exterior glass, wheels, paint protection</div>
+          <div class="lp-copy__item">Safe on matte, ceramic-coated, and PPF</div>
+          <div class="lp-copy__item">We come to you, no shop dropoff</div>
+          <div class="lp-copy__item">Exterior done while you're at work</div>
+        </div>
+      </div>
+      <div class="lp-value-grid">
+        <div class="lp-value">
+          <div class="lp-value__num">01</div>
+          <div class="lp-value__title">Same standard every visit</div>
+          <div class="lp-value__body">No shortcuts. The same professional standard whether it's your first clean or your fifteenth.</div>
+        </div>
+        <div class="lp-value">
+          <div class="lp-value__num">02</div>
+          <div class="lp-value__title">We come to you</div>
+          <div class="lp-value__body">At home, at work, wherever the car is. No driving to a shop, no waiting around.</div>
+        </div>
+        <div class="lp-value">
+          <div class="lp-value__num">03</div>
+          <div class="lp-value__title">Quote before we start</div>
+          <div class="lp-value__body">We confirm pricing before any work begins. No surprises on the invoice.</div>
+        </div>
+        <div class="lp-value">
+          <div class="lp-value__num">04</div>
+          <div class="lp-value__title">48h guarantee</div>
+          <div class="lp-value__body">Not happy? Let us know within 48 hours and we'll return to make it right.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES — Sand -->
+  <section class="lp-services">
+    <div class="lp-services__inner">
+      <p class="eyebrow eyebrow--dark">What We Offer</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,48px);color:var(--espresso);line-height:1.0;">Three services.<br>One standard.</h2>
+      <div class="lp-services-grid">
+        <div class="lp-svc">
+          <div class="lp-svc__num">01 — Exterior</div>
+          <div class="lp-svc__name">Exterior Clean</div>
+          <div class="lp-svc__desc">Full exterior clean: foam cannon, hand wash, wheel decontamination, glass clean, and finishing wax. Safe on all paint types.</div>
+          <div class="lp-svc__price">Included in every Service Plan</div>
+        </div>
+        <div class="lp-svc">
+          <div class="lp-svc__num">02 — Interior</div>
+          <div class="lp-svc__name">Interior Clean</div>
+          <div class="lp-svc__desc">Full interior clean: vacuum, deep surface clean, steam sanitize, headliner care, and pet hair removal. Cabins returned to like-new.</div>
+          <div class="lp-svc__price">Included in every Service Plan</div>
+        </div>
+        <div class="lp-svc">
+          <div class="lp-svc__num">03 — Full Detail</div>
+          <div class="lp-svc__name">Interior + Exterior</div>
+          <div class="lp-svc__desc">Full interior + exterior clean in one visit. The standard for seasonal refreshes, pre-sale prep, or a full reset.</div>
+          <div class="lp-svc__price">From $275 · By vehicle size</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND — Mocha -->
+  <section class="lp-cta">
+    <div class="lp-cta__inner">
+      <h2 class="lp-cta__title">Your car deserves better.</h2>
+      <p class="lp-cta__sub">Get a quote in 60 seconds. Same-day response. No obligation.</p>
+      <div class="lp-cta__actions">
+        <a href="#quote-form" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-white">Get My Quote &uarr;</a>
+        <a href="tel:9055375457" class="btn btn-ghost">(905) 537-5457</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MINIMAL FOOTER -->
+  <footer class="lp-footer">
+    <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    <p class="lp-footer__tagline">Showroom results. Your driveway. · Whistler, BC</p>
+    <div class="lp-footer__links">
+      <a href="https://lustradetail.ca/privacy-policy">Privacy Policy</a>
+      <a href="https://lustradetail.ca/terms-and-conditions">Terms &amp; Conditions</a>
+    </div>
+    <p class="lp-footer__legal">&copy; 2025 Lustra Mobile Detailing. All rights reserved.</p>
+  </footer>
+
+  <script>
+  </script>
+</div><!-- /.page-wrap -->
+</body>
+</html>

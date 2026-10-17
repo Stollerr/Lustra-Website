@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial &amp; Fleet — Lustra Mobile Detailing · Whistler, BC</title>
+  <meta name="description" content="Fleet and commercial detailing in Whistler, BC. Scheduled mobile service for businesses, rental fleets, and hospitality. Get a quote today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── PAGE HERO — Charcoal ── */
+    .page-hero {
+      background: var(--charcoal);
+      padding-top: calc(var(--nav-h) + clamp(72px,10vw,120px));
+      padding-bottom: clamp(72px,10vw,120px);
+      padding-left: var(--pad-x); padding-right: var(--pad-x);
+    }
+    .page-hero__inner { max-width: var(--max-w); margin: 0 auto; }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(52px,9.5vw,120px);
+      line-height: 0.88; color: var(--white); margin-bottom: 32px;
+    }
+    .page-hero__title span { color: var(--sand); display:block; }
+    .page-hero__row { display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap; }
+    .page-hero__sub { font-size:17px;font-weight:300;line-height:1.75;color:var(--taupe);max-width:500px; }
+    .page-hero__ctas { display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0; }
+
+    /* ── WHO WE SERVE — Sand ── */
+    .serve-section { background: var(--sand); padding: var(--section-y) var(--pad-x); }
+    .serve-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .serve-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2px; margin-top: 48px;
+      background: rgba(89,79,71,.15); border: 2px solid rgba(89,79,71,.12);
+      border-radius: 6px; overflow: hidden;
+    }
+    .serve-card { background: #fff; padding: 32px 26px; }
+    .serve-card__icon { font-size: 28px; margin-bottom: 14px; }
+    .serve-card__title { font-family:var(--font-display);font-size:17px;color:var(--espresso);margin-bottom:8px; }
+    .serve-card__body { font-size:13px;font-weight:300;line-height:1.65;color:var(--charcoal); }
+
+    /* ── HOW IT WORKS — Charcoal ── */
+    .how-section { background: var(--charcoal); padding: var(--section-y) var(--pad-x); }
+    .how-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .how-steps {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .how-step {
+      padding: 28px 24px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 4px;
+      position: relative;
+    }
+    .how-step::after {
+      content: '›'; position: absolute;
+      right: -16px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px; color: var(--mocha); opacity: .5;
+    }
+    .how-step:last-child::after { display: none; }
+    .how-step__num { font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--mocha);margin-bottom:12px; }
+    .how-step__title { font-family:var(--font-display);font-size:16px;color:var(--white);margin-bottom:8px; }
+    .how-step__body { font-size:13px;font-weight:300;line-height:1.65;color:var(--taupe); }
+
+    /* ── WHY LUSTRA — Sand ── */
+    .why-section { background: var(--sand); padding: var(--section-y) var(--pad-x); }
+    .why-section__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .why-title { font-family:var(--font-display);font-size:clamp(30px,4.5vw,52px);color:var(--espresso);line-height:1.0;margin-bottom:20px; }
+    .why-title span { color: var(--mocha); }
+    .why-body { font-size:16px;font-weight:300;line-height:1.75;color:var(--charcoal);margin-bottom:28px; }
+    .why-list { display:flex;flex-direction:column;gap:16px; }
+    .why-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px 20px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(89,79,71,.12);
+      border-radius: 4px;
+    }
+    .why-item__num { font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--mocha);flex-shrink:0;padding-top:3px; }
+    .why-item__title { font-family:var(--font-display);font-size:15px;color:var(--espresso);margin-bottom:4px; }
+    .why-item__body { font-size:13px;font-weight:300;line-height:1.6;color:var(--charcoal); }
+
+    /* ── QUOTE SECTION — Charcoal ── */
+    .quote-section { background: var(--charcoal); padding: var(--section-y) var(--pad-x); }
+    .quote-section__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: start;
+    }
+    .quote-info__title { font-family:var(--font-display);font-size:clamp(30px,4.5vw,52px);color:var(--white);line-height:1.0;margin-bottom:20px; }
+    .quote-info__body { font-size:16px;font-weight:300;line-height:1.75;color:var(--taupe);margin-bottom:36px; }
+    .quote-features { display:flex;flex-direction:column;gap:12px; }
+    .quote-feat { display:flex;align-items:flex-start;gap:12px;font-size:14px;font-weight:300;color:var(--taupe); }
+    .quote-feat::before { content:'';display:block;width:7px;height:7px;border-radius:50%;background:var(--mocha);flex-shrink:0;margin-top:4px; }
+
+    .quote-form-card {
+      background: var(--sand);
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid rgba(89,79,71,.2);
+    }
+    .quote-form-card__header {
+      background: var(--espresso); padding: 22px 28px;
+    }
+    .qfc-tag { font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--greige);margin-bottom:5px; }
+    .qfc-title { font-family:var(--font-display);font-size:18px;color:var(--white);line-height:1.1; }
+    .qfc-sub { font-size:12px;font-weight:300;color:rgba(255,255,255,.4);margin-top:3px; }
+    .quote-form-card iframe { width:100%;height:1216px;border:none;display:block; }
+
+    /* ── CTA BAND — Mocha ── */
+    .cta-band {
+      background: var(--mocha); padding: clamp(72px,10vw,112px) var(--pad-x);
+      text-align:center; position:relative; overflow:hidden;
+    }
+    .cta-band::before {
+      content:'LUSTRA'; position:absolute;
+      font-family:var(--font-display); font-size:clamp(100px,18vw,220px);
+      color:rgba(255,255,255,.04); top:50%;left:50%;
+      transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none;
+    }
+    .cta-band__inner { position:relative;z-index:2;max-width:580px;margin:0 auto; }
+    .cta-band__title { font-family:var(--font-display);font-size:clamp(30px,5vw,54px);color:var(--white);line-height:1.0;margin-bottom:14px; }
+    .cta-band__sub { font-size:16px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:36px; }
+    .cta-band__actions { display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .serve-grid { grid-template-columns:1fr 1fr; }
+      .how-steps { grid-template-columns:1fr 1fr; }
+      .how-step::after { display:none; }
+      .why-section__inner { grid-template-columns:1fr; gap:48px; }
+      .quote-section__inner { grid-template-columns:1fr; gap:48px; }
+    }
+    @media (max-width: 640px) {
+      .serve-grid { grid-template-columns:1fr; }
+      .how-steps { grid-template-columns:1fr; }
+    }
+
+    /* ── GHL full-width breakout ── */
+    html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+    .page-wrap { width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="nav" id="nav">
+    <a href="https://lustradetail.ca" class="nav__logo">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    </a>
+    <ul class="nav__links">
+      <li><a href="https://lustradetail.ca/commercial" class="active">Commercial</a></li>
+      <li><a href="https://lustradetail.ca/subscription">Subscription</a></li>
+      <li><a href="https://lustradetail.ca/services">Services</a></li>
+      <li><a href="https://lustradetail.ca/gallery">Gallery</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="tel:9055375457" class="nav__phone">(905) 537-5457</a>
+      <a href="https://lustradetail.ca/contact" class="btn btn-primary">Book Now <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__drawer" id="drawer">
+    <a href="https://lustradetail.ca/commercial">Commercial</a>
+    <a href="https://lustradetail.ca/subscription">Subscription</a>
+    <a href="https://lustradetail.ca/services">Services</a>
+    <a href="https://lustradetail.ca/gallery">Gallery</a>
+    <div class="drawer-contact">
+      <a href="tel:9055375457">(905) 537-5457</a>
+      <a href="mailto:info@lustradetail.ca">info@lustradetail.ca</a>
+      <a href="https://lustradetail.ca/contact" class="btn btn-primary" style="margin-top:10px;">Book Now</a>
+    </div>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">FLEET &amp;<br><span>COMMERCIAL.</span></h1>
+      <div class="page-hero__row">
+        <p class="page-hero__sub">Scheduled mobile detailing for businesses, rental fleets, and hospitality properties across Whistler and the Sea to Sky corridor. Custom plans, consistent results.</p>
+        <div class="page-hero__ctas">
+          <a href="#quote" class="btn btn-primary">Get a Quote &rarr;</a>
+          <a href="tel:9055375457" class="btn btn-outline">(905) 537-5457</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHO WE SERVE — Sand -->
+  <section class="serve-section">
+    <div class="serve-section__inner">
+      <p class="eyebrow eyebrow--dark">Who We Serve</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,46px);color:var(--espresso);line-height:1.0;">Built for businesses that move.</h2>
+      <div class="serve-grid">
+        <div class="serve-card">
+          <div class="serve-card__icon">🚗</div>
+          <div class="serve-card__title">Rental Fleets</div>
+          <div class="serve-card__body">Turnaround detailing for rental car operators. Vehicles returned guest-ready, every time, on your schedule.</div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-card__icon">🏨</div>
+          <div class="serve-card__title">Hospitality</div>
+          <div class="serve-card__body">Hotels, lodges, and resorts with shuttle or guest vehicles. Keep your fleet presenting to the standard your brand demands.</div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-card__icon">🏗️</div>
+          <div class="serve-card__title">Trades &amp; Contractors</div>
+          <div class="serve-card__body">Work trucks and vans cleaned on a regular cycle. A clean vehicle presents a professional business on every job site.</div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-card__icon">🏢</div>
+          <div class="serve-card__title">Corporate</div>
+          <div class="serve-card__body">Executive vehicles and company cars maintained to a consistent standard. On-site service, no downtime for your team.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- HOW IT WORKS — Charcoal -->
+  <section class="how-section">
+    <div class="how-section__inner">
+      <p class="eyebrow">How It Works</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,46px);color:var(--white);line-height:1.0;">Simple. Scheduled. Consistent.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step__num">01</div>
+          <div class="how-step__title">Tell us about your fleet</div>
+          <div class="how-step__body">Fill out our form with your vehicle count, types, and how often you need service.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step__num">02</div>
+          <div class="how-step__title">We build a plan</div>
+          <div class="how-step__body">We'll put together a custom service schedule and pricing that fits your operation, not a generic package.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step__num">03</div>
+          <div class="how-step__title">We show up on schedule</div>
+          <div class="how-step__body">Service happens at your location, on your timetable. No disruption to your operation.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step__num">04</div>
+          <div class="how-step__title">Consistent results</div>
+          <div class="how-step__body">Same process, same products, same standard, every single visit. Your fleet looking the part, always.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHY LUSTRA — Sand -->
+  <section class="why-section">
+    <div class="why-section__inner">
+      <div>
+        <p class="eyebrow eyebrow--dark">Why Lustra</p>
+        <h2 class="why-title">A commercial partner,<br><span>not a vendor.</span></h2>
+        <p class="why-body">We work with businesses the same way we work with individuals, with the same attention to detail, the same commitment to showing up, and the same guarantee on every visit.</p>
+        <a href="#quote" class="btn btn-primary">Request a Commercial Quote &rarr;</a>
+      </div>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-item__num">01</div>
+          <div><div class="why-item__title">On-site service</div><div class="why-item__body">We come to your location, no time lost driving vehicles to a shop.</div></div>
+        </div>
+        <div class="why-item">
+          <div class="why-item__num">02</div>
+          <div><div class="why-item__title">Flexible scheduling</div><div class="why-item__body">Early morning, after hours, between shifts, we work around your operation.</div></div>
+        </div>
+        <div class="why-item">
+          <div class="why-item__num">03</div>
+          <div><div class="why-item__title">Custom pricing</div><div class="why-item__body">Fleet rates based on volume and frequency. Not a one-size-fits-all package.</div></div>
+        </div>
+        <div class="why-item">
+          <div class="why-item__num">04</div>
+          <div><div class="why-item__title">$2M liability coverage</div><div class="why-item__body">Every visit is covered. Your vehicles and property are protected on every service call.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PHOTO STRIP — Sand -->
+  <section style="background:var(--sand);padding:var(--section-y) var(--pad-x);">
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <p class="eyebrow eyebrow--dark" style="margin-bottom:20px;">The Work Speaks</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;border-radius:6px;overflow:hidden;">
+        <div style="aspect-ratio:4/3;overflow:hidden;"><img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd681c5d711b355b58ca.jpg" alt="Lustra detail" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="aspect-ratio:4/3;overflow:hidden;"><img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd68162c3e3e34ff64dc.jpg" alt="Lustra detail" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="aspect-ratio:4/3;overflow:hidden;"><img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd686a6dd1b69afc753f.jpg" alt="Lustra detail" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="aspect-ratio:4/3;overflow:hidden;"><img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd686dd61c546a2113bf.jpg" alt="Lustra detail" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      </div>
+      <div style="text-align:center;margin-top:28px;">
+        <a href="https://lustradetail.ca/gallery" class="btn btn-primary">View Gallery &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- QUOTE SECTION — Charcoal -->
+  <section class="quote-section" id="quote">
+    <div class="quote-section__inner">
+      <div class="quote-info">
+        <p class="eyebrow">Get a Quote</p>
+        <h2 class="quote-info__title">Let's talk about<br>your fleet.</h2>
+        <p class="quote-info__body">Tell us about your vehicles and how often you need service. We'll get back to you with a custom plan and pricing, typically same-day.</p>
+        <div class="quote-features">
+          <div class="quote-feat">Custom schedule built around your operation</div>
+          <div class="quote-feat">Volume pricing for multi-vehicle fleets</div>
+          <div class="quote-feat">On-site service, no downtime</div>
+          <div class="quote-feat">Same-day response to all enquiries</div>
+          <div class="quote-feat">$2M liability coverage on every visit</div>
+        </div>
+      </div>
+      <div class="quote-form-card">
+        <div class="quote-form-card__header">
+          <div class="qfc-tag">Commercial Quote</div>
+          <div class="qfc-title">We'll get back to you fast.</div>
+          <div class="qfc-sub">Same-day response to all business enquiries.</div>
+        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/JekWWAZ9rBLW0mcFqpEW"
+          id="inline-JekWWAZ9rBLW0mcFqpEW-c"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-activation-type="alwaysActivated"
+          data-deactivation-type="neverDeactivate"
+          data-form-name="Lustra Detailing - Book Now"
+          data-height="1216"
+          data-layout-iframe-id="inline-JekWWAZ9rBLW0mcFqpEW-c"
+          data-form-id="JekWWAZ9rBLW0mcFqpEW"
+          title="Lustra Detailing - Book Now">
+        </iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND — Mocha -->
+  <section class="cta-band">
+    <div class="cta-band__inner">
+      <h2 class="cta-band__title">Your fleet.<br>Consistently clean.</h2>
+      <p class="cta-band__sub">Get in touch and we'll build a plan around your operation. No generic packages, just a schedule that works for you.</p>
+      <div class="cta-band__actions">
+        <a href="#quote" class="btn btn-white">Get a Fleet Quote &rarr;</a>
+        <a href="https://lustradetail.ca/subscription" class="btn btn-ghost">View Membership Plans</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+        <p class="footer__tagline">Whistler, BC &nbsp;·&nbsp; Mobile Detailing</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="https://lustradetail.ca">Home</a></li>
+          <li><a href="https://lustradetail.ca/services">Services</a></li>
+          <li><a href="https://lustradetail.ca/subscription">Membership</a></li>
+          <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+          <li><a href="https://lustradetail.ca/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Get in Touch</p>
+        <a href="tel:9055375457" class="footer__contact-item">(905) 537-5457</a>
+        <a href="mailto:info@lustradetail.ca" class="footer__contact-item">info@lustradetail.ca</a>
+        <a href="https://lustradetail.ca/contact" class="btn btn-outline" style="margin-top:10px;width:100%;justify-content:center;">Book Now</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; 2025 Lustra Mobile Detailing. All rights reserved.</p>
+      <div class="footer__sub-links">
+        <a href="https://lustradetail.ca/privacy-policy">Privacy Policy</a>
+        <a href="https://lustradetail.ca/terms-and-conditions">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+    burger.addEventListener('click',()=>{const o=burger.classList.toggle('open');drawer.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';}));
+  </script>
+</div><!-- /.page-wrap -->
+</body>
+</html>

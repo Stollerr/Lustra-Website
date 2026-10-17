@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Now — Lustra Mobile Detailing · Whistler, BC</title>
+  <meta name="description" content="Book your mobile detailing appointment with Lustra. Same-day response. Whistler, BC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--charcoal);
+      padding-top: calc(var(--nav-h) + clamp(64px,8vw,96px));
+      padding-bottom: clamp(64px,8vw,96px);
+      padding-left: var(--pad-x); padding-right: var(--pad-x);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: rgba(255,255,255,.06);
+    }
+    .page-hero__inner { max-width: var(--max-w); margin: 0 auto; }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(52px,9vw,116px);
+      line-height: 0.91; color: var(--white);
+      margin-bottom: 28px;
+    }
+    .page-hero__title span { color: var(--sand); }
+    .page-hero__row {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+    .page-hero__sub {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.75; color: var(--taupe); max-width: 460px;
+    }
+    .page-hero__meta {
+      display: flex; flex-direction: column; gap: 8px;
+      text-align: right;
+    }
+    .page-hero__meta-item {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--greige); opacity: .55;
+    }
+
+    /* ── BOOKING SECTION — Sand bg ── */
+    .booking-section {
+      background: var(--sand);
+      padding: var(--section-y) var(--pad-x);
+    }
+    .booking-section__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 72px; align-items: start;
+    }
+
+    /* Left: info + trust */
+    .booking-info {}
+    .booking-info__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px,4vw,44px);
+      color: var(--espresso); line-height: 1.0; margin-bottom: 20px;
+    }
+    .booking-info__body {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.75; color: var(--charcoal); margin-bottom: 36px;
+    }
+
+    .booking-trust { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .btrust {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(89,79,71,.12);
+      border-radius: 4px;
+    }
+    .btrust__icon {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; color: var(--mocha);
+      margin-top: 2px; flex-shrink: 0; width: 14px;
+    }
+    .btrust__text {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.5; color: var(--charcoal);
+    }
+
+    .booking-contact { display: flex; flex-direction: column; gap: 14px; }
+    .bcontact__label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--mocha); margin-bottom: 2px;
+    }
+    .bcontact__value {
+      font-size: 15px; font-weight: 300; color: var(--charcoal);
+      text-decoration: none; transition: color .2s;
+    }
+    a.bcontact__value:hover { color: var(--espresso); }
+
+    /* Right: form card */
+    .booking-form-card {
+      background: #fff;
+      border: 1px solid rgba(89,79,71,.15);
+      border-radius: 6px; overflow: hidden;
+      position: sticky; top: calc(var(--nav-h) + 24px);
+    }
+    .booking-form-card__header {
+      background: var(--espresso);
+      padding: 22px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .bfc-tag {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--greige); margin-bottom: 4px;
+    }
+    .bfc-title {
+      font-family: var(--font-display);
+      font-size: 18px; color: var(--white); line-height: 1.1;
+    }
+    .bfc-badge {
+      font-size: 11px; font-weight: 300;
+      color: rgba(255,255,255,.4); text-align: right; line-height: 1.6;
+    }
+    .booking-form-card iframe {
+      width: 100%; height: 1216px;
+      border: none; display: block;
+    }
+
+    /* ── PROOF STRIP ── */
+    .proof-strip {
+      background: var(--espresso);
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 18px var(--pad-x);
+    }
+    .proof-strip__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 4px 24px; font-size: 12px; font-weight: 300;
+      color: var(--greige);
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .proof-item:last-child { border-right: none; }
+    .proof-item__dot { color: var(--mocha); font-size: 10px; }
+
+    /* ── SERVICE QUICK LOOK ── */
+    .slook-section {
+      background: var(--charcoal);
+      padding: var(--section-y) var(--pad-x);
+    }
+    .slook-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .slook-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
+    }
+    .slook-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; border-radius: 6px; overflow: hidden;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.04);
+    }
+    .slook {
+      background: var(--charcoal); padding: 32px 28px;
+      border-bottom: 2px solid transparent;
+      transition: border-color .25s, background .25s;
+    }
+    .slook:hover { background: rgba(42,35,32,.5); border-color: var(--mocha); }
+    .slook__num { font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--mocha);margin-bottom:10px; }
+    .slook__name { font-family:var(--font-display);font-size:18px;color:var(--white);margin-bottom:8px; }
+    .slook__desc { font-size:13px;font-weight:300;line-height:1.65;color:var(--taupe); }
+    .slook__price { margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:400;color:var(--greige); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .booking-section__inner { grid-template-columns: 1fr; gap: 48px; }
+      .booking-form-card { position: static; }
+    }
+    @media (max-width: 768px) {
+      .slook-grid { grid-template-columns: 1fr; }
+      .page-hero__meta { text-align: left; }
+      .proof-item { padding: 6px 14px; font-size: 11px; }
+    }
+
+    /* ── GHL full-width breakout ── */
+    html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+    .page-wrap { width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="nav" id="nav">
+    <a href="https://lustradetail.ca" class="nav__logo">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    </a>
+    <ul class="nav__links">
+      <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+      <li><a href="https://lustradetail.ca/subscription">Subscription</a></li>
+      <li><a href="https://lustradetail.ca/services">Services</a></li>
+      <li><a href="https://lustradetail.ca/gallery">Gallery</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="tel:9055375457" class="nav__phone">(905) 537-5457</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary">Start Your Plan</a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__drawer" id="drawer">
+    <a href="https://lustradetail.ca/commercial">Commercial</a>
+    <a href="https://lustradetail.ca/subscription">Subscription</a>
+    <a href="https://lustradetail.ca/services">Services</a>
+    <a href="https://lustradetail.ca/gallery">Gallery</a>
+    <div class="drawer-contact">
+      <a href="tel:9055375457">(905) 537-5457</a>
+      <a href="mailto:info@lustradetail.ca">info@lustradetail.ca</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary" style="margin-top:10px;">Start Your Plan</a>
+    </div>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">BOOK YOUR<br><span>DETAIL.</span></h1>
+      <div class="page-hero__row">
+        <p class="page-hero__sub">Fill out the form below, we typically respond same-day with confirmation, pricing, and a booking window that works for you.</p>
+        <div class="page-hero__meta">
+          <span class="page-hero__meta-item">Same-day response</span>
+          <span class="page-hero__meta-item">Whistler · Sea to Sky</span>
+          <span class="page-hero__meta-item">Flexible scheduling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MEMBERSHIP CALLOUT STRIP -->
+  <div style="background:var(--sand);padding:22px var(--pad-x);border-bottom:1px solid rgba(89,79,71,.12);">
+    <div style="max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div>
+        <p style="font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:4px;">Lustra Membership</p>
+        <p style="font-size:15px;font-weight:300;color:var(--espresso);line-height:1.5;">Want recurring service? Skip the form and get started with a plan directly.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
+        <a href="https://lustradetail.ca/subscription" class="btn btn-primary">View Plans &rarr;</a>
+        <a href="https://lustradetail.ca/subscription" style="font-size:13px;font-weight:500;color:var(--mocha);text-decoration:underline;text-underline-offset:3px;">View Plans</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-section">
+    <div class="booking-section__inner">
+
+      <!-- Left info -->
+      <div class="booking-info">
+        <p class="eyebrow eyebrow--dark">Get in Touch</p>
+        <h2 class="booking-info__title">Everything happens on your schedule.</h2>
+        <p class="booking-info__body">
+          Pick your service, tell us what you drive, and we'll handle the rest. No waiting on hold, no complicated booking systems, just a fast reply and a confirmed appointment.
+        </p>
+
+        <div class="booking-trust">
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">Same-day response, we won't leave you waiting</span></div>
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">Quote confirmed before any work begins, no surprises</span></div>
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">We come to you: at home, at work, wherever the car is</span></div>
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">$2M liability coverage · Fully insured · Licensed BC</span></div>
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">48-hour satisfaction guarantee: if it's not right, we fix it</span></div>
+          <div class="btrust"><span class="btrust__icon">✓</span><span class="btrust__text">Exterior work done without you home, no need to take time off</span></div>
+        </div>
+
+        <div class="booking-contact">
+          <div>
+            <div class="bcontact__label">Phone</div>
+            <a href="tel:9055375457" class="bcontact__value">(905) 537-5457</a>
+          </div>
+          <div>
+            <div class="bcontact__label">Email</div>
+            <a href="mailto:info@lustradetail.ca" class="bcontact__value">info@lustradetail.ca</a>
+          </div>
+          <div>
+            <div class="bcontact__label">Service Area</div>
+            <span class="bcontact__value">Whistler &amp; Sea to Sky Corridor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div class="booking-form-card">
+        <div class="booking-form-card__header">
+          <div>
+            <p class="bfc-tag">Book Now</p>
+            <p class="bfc-title">We'll get back to you fast.</p>
+          </div>
+          <div class="bfc-badge">Takes 60<br>seconds.</div>
+        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/JekWWAZ9rBLW0mcFqpEW"
+          id="inline-JekWWAZ9rBLW0mcFqpEW"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-activation-type="alwaysActivated"
+          data-deactivation-type="neverDeactivate"
+          data-form-name="Lustra Detailing - Book Now"
+          data-height="1216"
+          data-layout-iframe-id="inline-JekWWAZ9rBLW0mcFqpEW"
+          data-form-id="JekWWAZ9rBLW0mcFqpEW"
+          title="Lustra Detailing - Book Now">
+        </iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-strip__inner">
+      <div class="proof-item"><span class="proof-item__dot">✦</span> Whistler &amp; Sea to Sky</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> Same-Day Response</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> $2M Liability Coverage</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> 48h Satisfaction Guarantee</div>
+      <div class="proof-item"><span class="proof-item__dot">✦</span> Flexible Scheduling</div>
+    </div>
+  </div>
+
+
+  <!-- SERVICE QUICK LOOK -->
+  <section class="slook-section">
+    <div class="slook-section__inner">
+      <div class="slook-header">
+        <div>
+          <p class="eyebrow">Not sure what to book?</p>
+          <h2 style="font-family:var(--font-display);font-size:clamp(26px,4vw,40px);color:var(--white);line-height:1.0;">Pick the service that fits.</h2>
+        </div>
+        <a href="https://lustradetail.ca/services" class="btn btn-outline">Full Services &rarr;</a>
+      </div>
+      <div class="slook-grid">
+        <div class="slook">
+          <div class="slook__num">01 · Exterior</div>
+          <div class="slook__name">Exterior Clean</div>
+          <div class="slook__desc">Full exterior clean: foam cannon, hand wash, wheel decontamination, glass clean, and finishing wax. Safe on all paint types.</div>
+          <div class="slook__price">Included in every Service Plan</div>
+        </div>
+        <div class="slook">
+          <div class="slook__num">02 · Interior</div>
+          <div class="slook__name">Interior Clean</div>
+          <div class="slook__desc">Full interior clean: vacuum, deep surface clean, steam sanitize, headliner care, and pet hair removal. Cabins returned to like-new condition.</div>
+          <div class="slook__price">Included in every Service Plan</div>
+        </div>
+        <div class="slook">
+          <div class="slook__num">03 · Full Detail</div>
+          <div class="slook__name">Interior + Exterior</div>
+          <div class="slook__desc">The complete Lustra treatment: a full interior and exterior clean in one visit. The standard for seasonal refreshes or pre-sale prep.</div>
+          <div class="slook__price">From $275 · By vehicle size</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+        <p class="footer__tagline">Whistler, BC &nbsp;·&nbsp; Mobile Detailing</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="https://lustradetail.ca">Home</a></li>
+          <li><a href="https://lustradetail.ca/services">Services</a></li>
+          <li><a href="https://lustradetail.ca/subscription">Membership</a></li>
+          <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+          <li><a href="https://lustradetail.ca/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Get in Touch</p>
+        <a href="tel:9055375457" class="footer__contact-item">(905) 537-5457</a>
+        <a href="mailto:info@lustradetail.ca" class="footer__contact-item">info@lustradetail.ca</a>
+        <a href="https://lustradetail.ca/subscription" class="btn btn-outline" style="margin-top:10px;width:100%;justify-content:center;">Start Your Plan</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; 2025 Lustra Mobile Detailing. All rights reserved.</p>
+      <div class="footer__sub-links">
+        <a href="https://lustradetail.ca/privacy-policy">Privacy Policy</a>
+        <a href="https://lustradetail.ca/terms-and-conditions">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+    burger.addEventListener('click',()=>{const o=burger.classList.toggle('open');drawer.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';}));
+  </script>
+</div><!-- /.page-wrap -->
+</body>
+</html>

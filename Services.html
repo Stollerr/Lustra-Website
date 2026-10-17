@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Lustra Mobile Detailing · Whistler, BC</title>
+  <meta name="description" content="Professional mobile detailing services in Whistler, BC. Exterior, interior, and full detail packages brought to your door.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    /* ── PAGE HERO — Charcoal ── */
+    .page-hero {
+      background: var(--charcoal);
+      padding-top: calc(var(--nav-h) + clamp(72px,10vw,120px));
+      padding-bottom: clamp(72px,10vw,120px);
+      padding-left: var(--pad-x); padding-right: var(--pad-x);
+    }
+    .page-hero__inner { max-width: var(--max-w); margin: 0 auto; }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(56px,10vw,128px);
+      line-height: 0.88; color: var(--white); margin-bottom: 32px;
+    }
+    .page-hero__title span { color: var(--sand); }
+    .page-hero__row { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+    .page-hero__sub { font-size:17px;font-weight:300;line-height:1.75;color:var(--taupe);max-width:500px; }
+    .page-hero__stats { display:flex; gap:40px; flex-shrink:0; }
+    .ph-stat__num { font-family:var(--font-display);font-size:32px;color:var(--white);line-height:1; }
+    .ph-stat__label { font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--greige);margin-top:4px; }
+
+    /* ── INTRO — Sand ── */
+    .intro-section {
+      background: var(--sand);
+      padding: var(--section-y) var(--pad-x);
+    }
+    .intro-section__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .intro-quote {
+      font-family: var(--font-display);
+      font-size: clamp(28px,4vw,48px);
+      line-height: 1.05; color: var(--espresso);
+    }
+    .intro-quote span { color: var(--mocha); }
+    .intro-body { font-size:16px;font-weight:300;line-height:1.8;color:var(--charcoal);margin-bottom:28px; }
+    .intro-bullets { display:flex;flex-direction:column;gap:10px; }
+    .intro-bullet { display:flex;align-items:center;gap:12px;font-size:14px;font-weight:300;color:var(--charcoal); }
+    .intro-bullet::before { content:'';display:block;width:7px;height:7px;border-radius:50%;background:var(--mocha);flex-shrink:0;margin-top:4px; }
+
+    /* ── SERVICE BLOCK — alternating ── */
+    .service-block {
+      padding: var(--section-y) var(--pad-x);
+    }
+    .service-block--dark { background: var(--charcoal); }
+    .service-block--light { background: var(--sand); }
+    .service-block__inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .service-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: end; margin-bottom: 56px;
+    }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: clamp(80px,14vw,160px);
+      line-height: 1; color: rgba(255,255,255,.55);
+      user-select: none; pointer-events: none;
+    }
+    .service-block:not(.service-block--dark) .service-num { color: rgba(89,79,71,.45); }
+    .service-block--light .service-num { color: rgba(42,35,32,.05); }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px,5vw,60px);
+      line-height: 0.95; margin-bottom: 16px;
+    }
+    .service-block--dark  .service-title { color: var(--white); }
+    .service-block--light .service-title { color: var(--espresso); }
+    .service-sub { font-size:16px;font-weight:300;line-height:1.75; }
+    .service-block--dark  .service-sub { color: var(--taupe); }
+    .service-block--light .service-sub { color: var(--charcoal); }
+
+    /* Stage steps */
+    .stages-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; border-radius: 6px; overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .service-block--dark  .stages-grid { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.04); }
+    .service-block--light .stages-grid { background: rgba(89,79,71,.15); border: 1px solid rgba(89,79,71,.12); }
+
+    .stage {
+      padding: 28px 24px;
+      position: relative;
+    }
+    .service-block--dark  .stage { background: var(--charcoal); }
+    .service-block--light .stage { background: #fff; }
+
+    .stage__step {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; color: var(--mocha); margin-bottom: 10px;
+    }
+    .stage__name {
+      font-family: var(--font-display);
+      font-size: 16px; margin-bottom: 8px;
+    }
+    .service-block--dark  .stage__name { color: var(--white); }
+    .service-block--light .stage__name { color: var(--espresso); }
+    .stage__desc {
+      font-size: 13px; font-weight: 300; line-height: 1.65;
+    }
+    .service-block--dark  .stage__desc { color: var(--taupe); }
+    .service-block--light .stage__desc { color: var(--charcoal); }
+
+    /* ── PACKAGES GRID — replaces stages ── */
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; border-radius: 6px; overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .service-block--dark  .packages-grid { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.04); }
+    .service-block--light .packages-grid { background: rgba(89,79,71,.15); border: 1px solid rgba(89,79,71,.12); }
+    .package { padding: 30px 26px; }
+    .service-block--dark  .package { background: var(--charcoal); }
+    .service-block--light .package { background: #fff; }
+    .package__step { font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--mocha);margin-bottom:10px; }
+    .package__name { font-family:var(--font-display);font-size:18px;margin-bottom:10px; }
+    .service-block--dark  .package__name { color: var(--white); }
+    .service-block--light .package__name { color: var(--espresso); }
+    .package__desc { font-size:13px;font-weight:300;line-height:1.6;margin-bottom:18px; }
+    .service-block--dark  .package__desc { color: var(--taupe); }
+    .service-block--light .package__desc { color: var(--charcoal); }
+    .package__items { list-style:none;padding:0;margin:0;padding-top:14px;display:flex;flex-direction:column;gap:8px; }
+    .service-block--dark  .package__items { border-top: 1px solid rgba(255,255,255,.07); }
+    .service-block--light .package__items { border-top: 1px solid rgba(89,79,71,.12); }
+    .package__items li { font-size:12px;font-weight:300;line-height:1.5;display:flex;align-items:center;gap:8px; }
+    .service-block--dark  .package__items li { color: var(--taupe); }
+    .service-block--light .package__items li { color: var(--charcoal); }
+    .package__items li::before { content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--mocha);flex-shrink:0; }
+
+    .service-footer {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .service-price-tag {
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .service-price-tag__from {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .service-block--dark  .service-price-tag__from { color: var(--greige); }
+    .service-block--light .service-price-tag__from { color: var(--mocha); }
+    .service-price-tag__num {
+      font-family: var(--font-display);
+      font-size: 36px; line-height: 1;
+    }
+    .service-block--dark  .service-price-tag__num { color: var(--white); }
+    .service-block--light .service-price-tag__num { color: var(--espresso); }
+    .service-price-tag__note {
+      font-size: 12px; font-weight: 300;
+    }
+    .service-block--dark  .service-price-tag__note { color: var(--greige); }
+    .service-block--light .service-price-tag__note { color: var(--mocha); }
+
+    /* ── FULL DETAIL — Charcoal ── */
+    .full-detail { background: var(--charcoal); padding: var(--section-y) var(--pad-x); }
+    .full-detail__inner { max-width: var(--max-w); margin: 0 auto; }
+    .full-detail__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px;
+    }
+    .full-detail__col {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 6px; padding: 36px 32px;
+    }
+    .full-detail__col-title {
+      font-family: var(--font-display);
+      font-size: 20px; color: var(--sand); margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .full-detail__item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14px; font-weight: 300; color: var(--taupe);
+      margin-bottom: 12px; line-height: 1.5;
+    }
+    .full-detail__item::before {
+      content: ''; display: block;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--mocha);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* ── PRICING TABLE — Sand ── */
+    .pricing-section { background: var(--sand); padding: var(--section-y) var(--pad-x); }
+    .pricing-section__inner { max-width: var(--max-w); margin: 0 auto; }
+    .pricing-table {
+      border: 1px solid rgba(89,79,71,.15);
+      border-radius: 6px; overflow: hidden; margin-top: 48px;
+    }
+    .ptable-head {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      background: var(--espresso); padding: 16px 28px; gap: 16px;
+    }
+    .ptable-head-cell {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--greige);
+    }
+    .ptable-row {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 20px 28px; gap: 16px; align-items: center;
+      background: #fff; border-bottom: 1px solid rgba(89,79,71,.1);
+      transition: background .2s;
+    }
+    .ptable-row:last-child { border-bottom: none; }
+    .ptable-row:hover { background: var(--taupe); }
+    .ptable-row__label { font-family:var(--font-display);font-size:16px;color:var(--espresso); }
+    .ptable-row__sub { font-size:12px;font-weight:300;color:var(--greige); }
+    .ptable-cell {
+      font-size: 15px; font-weight: 400; color: var(--espresso);
+    }
+    .ptable-cell--na { color: var(--greige); font-size: 12px; font-weight: 300; }
+
+    /* ── NOTES — Charcoal ── */
+    .notes-section { background: var(--charcoal); padding: 48px var(--pad-x); }
+    .notes-section__inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+    }
+    .note {
+      padding: 24px; background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06); border-radius: 4px;
+    }
+    .note__label { font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);margin-bottom:8px; }
+    .note__text { font-size:13px;font-weight:300;line-height:1.65;color:var(--taupe); }
+
+    /* ── CTA BAND — Mocha ── */
+    .cta-band {
+      background: var(--mocha); padding: clamp(72px,10vw,112px) var(--pad-x);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: 'LUSTRA'; position: absolute;
+      font-family: var(--font-display); font-size: clamp(100px,18vw,220px);
+      color: rgba(255,255,255,.04); top: 50%; left: 50%;
+      transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+    }
+    .cta-band__inner { position:relative;z-index:2;max-width:580px;margin:0 auto; }
+    .cta-band__title { font-family:var(--font-display);font-size:clamp(30px,5vw,54px);color:var(--white);line-height:1.0;margin-bottom:14px; }
+    .cta-band__sub { font-size:16px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:36px; }
+    .cta-band__actions { display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .intro-section__inner { grid-template-columns:1fr;gap:40px; }
+      .service-header { grid-template-columns:1fr; }
+      .service-num { display:none; }
+      .stages-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr 1fr; }
+      .full-detail__grid { grid-template-columns:1fr; }
+      .notes-section__inner { grid-template-columns:1fr 1fr; }
+      .ptable-head { grid-template-columns:1.5fr 1fr 1fr;display:grid; }
+      .ptable-head-cell:last-child { display:none; }
+      .ptable-row { grid-template-columns:1.5fr 1fr 1fr; }
+      .ptable-cell:last-child { display:none; }
+    }
+    @media (max-width: 640px) {
+      .stages-grid { grid-template-columns:1fr; }
+      .packages-grid { grid-template-columns:1fr; }
+      .notes-section__inner { grid-template-columns:1fr; }
+      .page-hero__stats { display:none; }
+    }
+
+    /* ── GHL full-width breakout ── */
+    html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+    .page-wrap { width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:hidden; }
+
+    /* ── VIDEO AMBIENT STRIP ── */
+    .vid-reel {
+      position: relative; overflow: hidden;
+      height: clamp(280px, 52vh, 520px);
+      background: var(--espresso);
+      display: flex; gap: 3px;
+    }
+    .vid-reel__col {
+      flex: 1; min-width: 0;
+      position: relative; overflow: hidden;
+    }
+    .vid-reel__col video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+      pointer-events: none;
+    }
+    .vid-reel__overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(
+        to bottom,
+        rgba(42,35,32,.25) 0%,
+        rgba(42,35,32,.5) 70%,
+        rgba(42,35,32,.72) 100%
+      );
+      display: flex; align-items: flex-end;
+      padding: clamp(24px,4vw,52px) clamp(24px,5vw,80px);
+    }
+    .vid-reel__label {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.8vw, 44px);
+      line-height: 1.0; color: var(--white); opacity: 0.92;
+    }
+    .vid-reel__label span { color: var(--sand); }
+
+    /* ── PHOTO MARQUEE ── */
+    .photo-marquee {
+      background: var(--espresso);
+      overflow: hidden; padding: 3px 0;
+    }
+    .marquee-track {
+      display: flex; gap: 3px;
+      animation: marquee-scroll 32s linear infinite;
+      width: max-content;
+    }
+    .photo-marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track img {
+      width: clamp(220px, 26vw, 340px);
+      height: clamp(148px, 18vw, 230px);
+      object-fit: cover; display: block; flex-shrink: 0;
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── 3D PHOTO GALLERY ── */
+    .gallery-spread {
+      background: var(--charcoal);
+      padding: var(--section-y) var(--pad-x);
+    }
+    .gallery-spread__inner { max-width: var(--max-w); margin: 0 auto; }
+    .gallery-spread__head {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .gallery-spread__cards {
+      display: flex; gap: 0;
+      justify-content: center; align-items: flex-end;
+      perspective: 1400px;
+      overflow: visible;
+    }
+    .gs-card {
+      flex-shrink: 0;
+      width: clamp(120px, 18vw, 220px);
+      aspect-ratio: 3/4;
+      overflow: hidden; border-radius: 3px;
+      margin: 0 -10px;
+      transition: transform 0.45s ease, opacity 0.45s ease, box-shadow 0.45s ease;
+      cursor: pointer;
+      box-shadow: 0 14px 36px rgba(0,0,0,.55);
+    }
+    .gs-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gs-card:nth-child(1) { transform: perspective(900px) rotateY(20deg) translateZ(-35px) translateX(24px); z-index:1; opacity:.65; }
+    .gs-card:nth-child(2) { transform: perspective(900px) rotateY(10deg) translateZ(-15px) translateX(12px); z-index:2; opacity:.82; }
+    .gs-card:nth-child(3) { transform: perspective(900px) rotateY(0deg) translateZ(0); z-index:5; opacity:1; }
+    .gs-card:nth-child(4) { transform: perspective(900px) rotateY(-10deg) translateZ(-15px) translateX(-12px); z-index:2; opacity:.82; }
+    .gs-card:nth-child(5) { transform: perspective(900px) rotateY(-20deg) translateZ(-35px) translateX(-24px); z-index:1; opacity:.65; }
+    .gs-card:hover { transform: perspective(900px) rotateY(0deg) translateZ(24px) scale(1.04) !important; z-index:10 !important; opacity:1 !important; box-shadow: 0 28px 64px rgba(0,0,0,.7); }
+    @media (max-width: 640px) {
+      .gs-card:nth-child(1), .gs-card:nth-child(5) { display: none; }
+      .gs-card { margin: 0 -5px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="nav" id="nav">
+    <a href="https://lustradetail.ca" class="nav__logo">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+    </a>
+    <ul class="nav__links">
+      <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+      <li><a href="https://lustradetail.ca/subscription">Subscription</a></li>
+      <li><a href="https://lustradetail.ca/services" class="active">Services</a></li>
+      <li><a href="https://lustradetail.ca/gallery">Gallery</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="tel:9055375457" class="nav__phone">(905) 537-5457</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary">Start Your Plan <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__drawer" id="drawer">
+    <a href="https://lustradetail.ca/commercial">Commercial</a>
+    <a href="https://lustradetail.ca/subscription">Subscription</a>
+    <a href="https://lustradetail.ca/services">Services</a>
+    <a href="https://lustradetail.ca/gallery">Gallery</a>
+    <div class="drawer-contact">
+      <a href="tel:9055375457">(905) 537-5457</a>
+      <a href="mailto:info@lustradetail.ca">info@lustradetail.ca</a>
+      <a href="https://lustradetail.ca/subscription" class="btn btn-primary" style="margin-top:10px;">Start Your Plan</a>
+    </div>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">THE FULL<br><span>CLEAN.</span></h1>
+      <div class="page-hero__row">
+        <p class="page-hero__sub">Every service follows the same disciplined standard. No shortcuts, no skipped steps. The same result every single visit.</p>
+        <div class="page-hero__stats">
+          <div class="ph-stat">
+            <div class="ph-stat__num">$2M</div>
+            <div class="ph-stat__label">Liability coverage</div>
+          </div>
+          <div class="ph-stat">
+            <div class="ph-stat__num">48h</div>
+            <div class="ph-stat__label">Satisfaction guarantee</div>
+          </div>
+          <div class="ph-stat">
+            <div class="ph-stat__num">2–3</div>
+            <div class="ph-stat__label">Days booking window</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- INTRO — Sand -->
+  <section class="intro-section">
+    <div class="intro-section__inner">
+      <h2 class="intro-quote">Two services.<br><span>One standard.</span></h2>
+      <div>
+        <p class="intro-body">Every product is chosen with purpose, for the surface it touches. Every visit leaves your vehicle better than we found it. We offer two service tiers — Full Clean and Full Detail — priced honestly by vehicle size.</p>
+        <div class="intro-bullets">
+          <div class="intro-bullet">Safe on all paint types: matte, ceramic-coated, PPF</div>
+          <div class="intro-bullet">Products matched to your vehicle's specific finish</div>
+          <div class="intro-bullet">Exterior work completed without you home</div>
+          <div class="intro-bullet">$2M liability coverage on every visit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VIDEO AMBIENT STRIP -->
+  <section class="vid-reel" aria-hidden="true">
+    <div class="vid-reel__col">
+      <video autoplay muted playsinline loop preload="auto">
+        <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d27a0a683b64fedaa8bb.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="vid-reel__col">
+      <video autoplay muted playsinline loop preload="auto">
+        <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d27c0a683b64fedaa8c6.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="vid-reel__col">
+      <video autoplay muted playsinline loop preload="auto">
+        <source src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33d2836a6dd1b69afd0d07.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="vid-reel__overlay">
+      <p class="vid-reel__label">Thorough. Consistent.<br><span>Every single time.</span></p>
+    </div>
+  </section>
+
+
+  <!-- FULL CLEAN — Charcoal -->
+  <section class="service-block service-block--dark" id="exterior">
+    <div class="service-block__inner">
+      <div class="service-header">
+        <div class="service-num">01</div>
+        <div>
+          <p class="eyebrow">Full Clean</p>
+          <h2 class="service-title">Thorough.<br>Every time.</h2>
+          <p class="service-sub">A genuine full clean — interior and exterior. Thorough vacuum, window clean, surface wipe-down. Not a discounted Full Detail, a different and faster scope done right. What every Service Plan is built on.</p>
+        </div>
+      </div>
+
+      <div class="packages-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="package">
+          <div class="package__step">Exterior</div>
+          <div class="package__name">What's Included</div>
+          <ul class="package__items">
+            <li>Pre-rinse &amp; foam cannon dwell</li>
+            <li>Panel-by-panel hand wash</li>
+            <li>Wheel &amp; arch decontamination</li>
+            <li>Interior &amp; exterior glass clean</li>
+            <li>Surface wipe-down &amp; dry</li>
+          </ul>
+        </div>
+        <div class="package">
+          <div class="package__step">Interior</div>
+          <div class="package__name">What's Included</div>
+          <ul class="package__items">
+            <li>Full vacuum &amp; air-blow</li>
+            <li>Surface wipe-down (dash, doors, console)</li>
+            <li>Interior glass clean</li>
+            <li>Cup holders &amp; door pockets</li>
+            <li>Pet hair removal (standard)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,.07);">
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--greige);">Vehicle</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--greige);">Interior + Exterior</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--greige);">Interior Only</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--greige);">Exterior Saving</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,.05);">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--white);">Sedan</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$220</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$150</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--greige);">Save $70</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--white);">Mid-Size</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$260</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$180</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--greige);">Save $80</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--white);">XL</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$310</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--white);">$200</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--greige);">Save $110</div>
+        </div>
+      </div>
+
+      <div class="service-footer" style="margin-top:28px;">
+        <div class="service-price-tag">
+          <span class="service-price-tag__num">Included</span>
+          <span class="service-price-tag__note">in every Service Plan</span>
+        </div>
+        <a href="https://lustradetail.ca/subscription" class="btn btn-primary">View Service Plans &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PHOTO MARQUEE -->
+  <section class="photo-marquee" aria-label="Work gallery">
+    <div class="marquee-track">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd660a683b64feda2042.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd670a683b64feda204d.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd676dd61c546a211394.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd690a683b64feda20a4.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd691c5d711b355b58ec.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20c6.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20d4.jpg" alt="Lustra detail work">
+      <!-- Duplicate for seamless loop -->
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd660a683b64feda2042.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd670a683b64feda204d.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd676dd61c546a211394.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd690a683b64feda20a4.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd691c5d711b355b58ec.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20c6.jpg" alt="Lustra detail work">
+      <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20d4.jpg" alt="Lustra detail work">
+    </div>
+  </section>
+
+
+  <!-- FULL DETAIL — Sand -->
+  <section class="service-block service-block--light" id="interior">
+    <div class="service-block__inner">
+      <div class="service-header">
+        <div class="service-num">02</div>
+        <div>
+          <p class="eyebrow eyebrow--dark">Full Detail</p>
+          <h2 class="service-title" style="color:var(--espresso);">Deep work.<br>Finishes included.</h2>
+          <p class="service-sub" style="color:var(--charcoal);">A full interior and exterior detail — finishes, dressings, full attention to every surface. Clay bar is included as standard. For seasonal refreshes, pre-sale prep, or whenever your vehicle deserves the full treatment.</p>
+        </div>
+      </div>
+
+      <div class="packages-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="package" style="background:rgba(89,79,71,.08);border-color:rgba(89,79,71,.2);">
+          <div class="package__step" style="color:var(--mocha);">Exterior</div>
+          <div class="package__name" style="color:var(--espresso);">What's Included</div>
+          <ul class="package__items" style="color:var(--charcoal);">
+            <li>Full pre-rinse &amp; foam cannon dwell</li>
+            <li>Panel-by-panel hand wash</li>
+            <li>Wheel &amp; arch decontamination</li>
+            <li>Clay bar decontamination (standard)</li>
+            <li>Interior &amp; exterior glass clean</li>
+            <li>Finishing wax &amp; paint protection</li>
+          </ul>
+        </div>
+        <div class="package" style="background:rgba(89,79,71,.08);border-color:rgba(89,79,71,.2);">
+          <div class="package__step" style="color:var(--mocha);">Interior</div>
+          <div class="package__name" style="color:var(--espresso);">What's Included</div>
+          <ul class="package__items" style="color:var(--charcoal);">
+            <li>Full vacuum &amp; air-blow</li>
+            <li>Deep surface clean (dash, doors, vents, crevices)</li>
+            <li>Steam sanitization</li>
+            <li>Headliner care</li>
+            <li>Leather / fabric conditioning &amp; dressings</li>
+            <li>Pet hair removal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;background:rgba(89,79,71,.08);border:1px solid rgba(89,79,71,.2);border-radius:6px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(89,79,71,.15);">
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mocha);">Vehicle</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mocha);">Interior + Exterior</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mocha);">Interior Only</div>
+          <div style="padding:14px 18px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mocha);">Exterior Saving</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(89,79,71,.1);">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--espresso);">Sedan</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$275</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$190</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--mocha);">Save $85</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(89,79,71,.1);background:rgba(89,79,71,.05);">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--espresso);">Mid-Size</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$350</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$225</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--mocha);">Save $125</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;">
+          <div style="padding:16px 18px;font-size:14px;font-weight:500;color:var(--espresso);">XL</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$400</div>
+          <div style="padding:16px 18px;font-family:var(--font-display);font-size:18px;color:var(--espresso);">$250</div>
+          <div style="padding:16px 18px;font-size:13px;font-weight:300;color:var(--mocha);">Save $150</div>
+        </div>
+      </div>
+
+      <div class="service-footer" style="margin-top:28px;">
+        <div class="service-price-tag">
+          <span class="service-price-tag__from" style="color:var(--mocha);font-size:13px;">From</span>
+          <span class="service-price-tag__num" style="color:var(--espresso);">$275</span>
+          <span class="service-price-tag__note" style="color:var(--mocha);">· Clay bar included</span>
+        </div>
+        <a href="https://lustradetail.ca/contact" class="btn btn-primary">Book a Full Detail &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ADD-ONS — Charcoal -->
+  <section class="full-detail" id="full">
+    <div class="full-detail__inner">
+      <p class="eyebrow">Add-Ons</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(30px,4vw,48px);color:var(--white);line-height:0.95;margin-bottom:16px;">Available on<br>any service.</h2>
+      <p style="font-size:16px;font-weight:300;line-height:1.75;color:var(--taupe);max-width:520px;margin-bottom:36px;">Add any of the following to a Full Clean or Full Detail booking. Note: clay bar is included free on all Full Detail bookings — it's a paid add-on on Full Clean only.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;overflow:hidden;">
+        <div style="background:var(--charcoal);padding:24px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:5px;">Waxing</div>
+            <div style="font-size:12px;font-weight:300;color:var(--greige);line-height:1.55;">Finishing wax coat on exterior. Available on either tier.</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;color:var(--sand);flex-shrink:0;">+$50</div>
+        </div>
+        <div style="background:var(--charcoal);padding:24px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:5px;">Clay Bar</div>
+            <div style="font-size:12px;font-weight:300;color:var(--greige);line-height:1.55;">Full clear coat decontamination. Full Clean only — included free on Full Detail.</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;color:var(--sand);flex-shrink:0;">+$50</div>
+        </div>
+        <div style="background:var(--charcoal);padding:24px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:5px;">Excessive Dog Hair</div>
+            <div style="font-size:12px;font-weight:300;color:var(--greige);line-height:1.55;">$50 if excessive. Included free if tame — we'll let you know before charging.</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;color:var(--sand);flex-shrink:0;">+$50</div>
+        </div>
+        <div style="background:var(--charcoal);padding:24px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:5px;">Carpet &amp; Upholstery Shampoo</div>
+            <div style="font-size:12px;font-weight:300;color:var(--greige);line-height:1.55;">Quote-based — depends on volume, spot difficulty, and material.</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:16px;color:var(--greige);flex-shrink:0;white-space:nowrap;">Quote</div>
+        </div>
+        <div style="background:var(--charcoal);padding:24px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:5px;">Stain Removal</div>
+            <div style="font-size:12px;font-weight:300;color:var(--greige);line-height:1.55;">Quote-based — depends on size, material, and effort required.</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:16px;color:var(--greige);flex-shrink:0;white-space:nowrap;">Quote</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 3D GALLERY — Charcoal -->
+  <section class="gallery-spread">
+    <div class="gallery-spread__inner">
+      <div class="gallery-spread__head">
+        <div>
+          <p class="eyebrow">The Work</p>
+          <h2 style="font-family:var(--font-display);font-size:clamp(28px,4.2vw,52px);color:var(--white);line-height:1.0;margin-top:10px;">Results you<br><span style="color:var(--sand);">can see.</span></h2>
+        </div>
+        <a href="https://lustradetail.ca/gallery" class="btn btn-outline" style="flex-shrink:0;">View Full Gallery &rarr;</a>
+      </div>
+      <div class="gallery-spread__cards">
+        <div class="gs-card">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd660a683b64feda2042.jpg" alt="Lustra detailing result">
+        </div>
+        <div class="gs-card">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd68162c3e3e34ff64dc.jpg" alt="Lustra detailing result">
+        </div>
+        <div class="gs-card">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd690a683b64feda20a4.jpg" alt="Lustra detailing result">
+        </div>
+        <div class="gs-card">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a0a683b64feda20c6.jpg" alt="Lustra detailing result">
+        </div>
+        <div class="gs-card">
+          <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a33cd6a6dd61c546a2113ef.jpg" alt="Lustra detailing result">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PRICING TABLE — Sand -->
+  <section class="pricing-section">
+    <div class="pricing-section__inner">
+      <p class="eyebrow eyebrow--dark">Pricing Reference</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(30px,4.5vw,52px);color:var(--espresso);line-height:1.0;margin-bottom:12px;">Transparent pricing.<br>No surprises.</h2>
+      <p style="font-size:16px;font-weight:300;color:var(--charcoal);line-height:1.7;max-width:520px;margin-bottom:36px;">All prices are for Interior + Exterior. Interior-only pricing available — see service sections above.</p>
+
+      <div class="pricing-table">
+        <div class="ptable-head" style="grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;">
+          <div class="ptable-head-cell">Vehicle</div>
+          <div class="ptable-head-cell">Full Clean</div>
+          <div class="ptable-head-cell">Full Detail</div>
+          <div class="ptable-head-cell">Plan Monthly</div>
+          <div class="ptable-head-cell">Plan Bi-Monthly</div>
+        </div>
+        <div class="ptable-row" style="grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;">
+          <div><div class="ptable-row__label">Sedan / Compact</div><div class="ptable-row__sub">Standard sedans</div></div>
+          <div class="ptable-cell">$220</div>
+          <div class="ptable-cell">$275</div>
+          <div class="ptable-cell">$190</div>
+          <div class="ptable-cell">$215</div>
+        </div>
+        <div class="ptable-row" style="grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;">
+          <div><div class="ptable-row__label">Mid-Size SUV</div><div class="ptable-row__sub">RAV4, Explorer, Pilot, etc.</div></div>
+          <div class="ptable-cell">$260</div>
+          <div class="ptable-cell">$350</div>
+          <div class="ptable-cell">$220</div>
+          <div class="ptable-cell">$245</div>
+        </div>
+        <div class="ptable-row" style="grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;">
+          <div><div class="ptable-row__label">XL / Full-Size</div><div class="ptable-row__sub">Trucks, vans &amp; large SUVs</div></div>
+          <div class="ptable-cell">$310</div>
+          <div class="ptable-cell">$400</div>
+          <div class="ptable-cell">$260</div>
+          <div class="ptable-cell">$285</div>
+        </div>
+      </div>
+      <p style="font-size:12px;font-weight:300;color:var(--charcoal);opacity:.65;margin-top:18px;">Service Plan rates are per visit · Full Clean scope · Clay bar included free on Full Detail · 3-visit minimum on plans · <a href="https://lustradetail.ca/subscription" style="color:var(--mocha);text-decoration:underline;">View Service Plans &rarr;</a></p>
+    </div>
+  </section>
+
+
+  <!-- NOTES — Charcoal -->
+  <section class="notes-section">
+    <div class="notes-section__inner">
+      <div class="note">
+        <div class="note__label">Paint Safe</div>
+        <div class="note__text">All products are pH-neutral and safe on matte, ceramic-coated, and PPF surfaces. Product selection confirmed before each visit.</div>
+      </div>
+      <div class="note">
+        <div class="note__label">No Home Required</div>
+        <div class="note__text">Exterior services can be completed without you present. We'll let you know when we're done, no time off needed.</div>
+      </div>
+      <div class="note">
+        <div class="note__label">48h Guarantee</div>
+        <div class="note__text">Not satisfied with the result? We'll return within 48 hours and make it right. No questions asked.</div>
+      </div>
+      <div class="note">
+        <div class="note__label">$2M Coverage</div>
+        <div class="note__text">Fully insured with $2M liability coverage on every visit. Your vehicle and your property are protected.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND — Mocha -->
+  <section class="cta-band">
+    <div class="cta-band__inner">
+      <h2 class="cta-band__title">Ready to book?</h2>
+      <p class="cta-band__sub">Pick your plan, lock in your schedule — we handle the rest every single time.</p>
+      <div class="cta-band__actions">
+        <a href="https://lustradetail.ca/subscription" class="btn btn-white">Start Your Plan &rarr;</a>
+        <a href="https://lustradetail.ca/contact" class="btn btn-ghost">Need a one-time clean? Contact us</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="https://assets.cdn.filesafe.space/cpP5RZxE3YCLgdnsFMon/media/6a2a863f9bdda92b22bcd2cf.png" alt="Lustra Mobile Detailing">
+        <p class="footer__tagline">Whistler, BC &nbsp;·&nbsp; Mobile Detailing</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="https://lustradetail.ca">Home</a></li>
+          <li><a href="https://lustradetail.ca/services">Services</a></li>
+          <li><a href="https://lustradetail.ca/subscription">Membership</a></li>
+          <li><a href="https://lustradetail.ca/commercial">Commercial</a></li>
+          <li><a href="https://lustradetail.ca/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Get in Touch</p>
+        <a href="tel:9055375457" class="footer__contact-item">(905) 537-5457</a>
+        <a href="mailto:info@lustradetail.ca" class="footer__contact-item">info@lustradetail.ca</a>
+        <a href="https://lustradetail.ca/subscription" class="btn btn-outline" style="margin-top:10px;width:100%;justify-content:center;">Start Your Plan</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; 2025 Lustra Mobile Detailing. All rights reserved.</p>
+      <div class="footer__sub-links">
+        <a href="https://lustradetail.ca/privacy-policy">Privacy Policy</a>
+        <a href="https://lustradetail.ca/terms-and-conditions">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav'),burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
+    burger.addEventListener('click',()=>{const o=burger.classList.toggle('open');drawer.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';}));
+    const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)';io.unobserve(x.target);}}),{threshold:.08});
+    document.querySelectorAll('.stage,.note').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition=`opacity .45s ease ${i*.04}s,transform .45s ease ${i*.04}s`;io.observe(el);});
+  </script>
+</div><!-- /.page-wrap -->
+</body>
+</html>
