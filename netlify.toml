@@ -1,0 +1,9 @@
+[build]
+  publish = "."
+
+# Keep archived/reference files off the public site
+[[redirects]]
+  from = "/_archive/*"
+  to = "/404"
+  status = 404
+  force = true
